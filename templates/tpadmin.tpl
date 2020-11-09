@@ -24,17 +24,19 @@
       <td> <input type="text" name="EditColor" id="" value="{$producto->color}"> </td>
       <td> <input type="number" name="EditPrecio" id="" value="{$producto->precio}"> </td>
       <td> <input type="text" name="EditEspecificacion" id="" value="{$producto->especificacion}"> </td>
-     
-      {foreach from=$Categorias item=categoria}
       
-      {if $categoria->id eq $producto->id_categoria}  <!-- este no se tiene que poder editar   !!!-->
-      <td> {$categoria->nombre_categoria}</td> 
-      {/if}
-      {/foreach}
+     
+     
+      
+      
 
-      <td> <input type="numer" name="EditIdCategoria" id="" value="{$producto->id_categoria}"> </td>
-         <!-- aca tenemos que agregar un input que nos muestre el id_categoria del producto para poder editarlo -->
+      <td> <select name="InsertCategoria" id="">
 
+      {foreach from=$descriptos item=descripto}
+        <option value="{$descripto->id}"> {$descripto->nombre_categoria} </option>
+      {/foreach} 
+      </select> </td>
+      
 
        <td> <input type="number" name="EditId" value="{$producto->id}" style="display:none"> </td>
          <!-- Como mostsramos el nombre de la categoria??? -->
@@ -51,5 +53,11 @@
 
 
 </table>
+<button type="button" class="btn btn-primary btn-lg btn-block badge-dark"><a href="insertar"> INSERTAR PRODUCTO</a></button>
+<button type="button" class="btn btn-secondary btn-lg btn-block badge-dark"><a href="catinsert"> INSERTAR CATEGORIA </a></button>
+<button type="button" class="btn btn-secondary btn-lg btn-block badge-dark"><a href="borrarcat"> BORRAR CATEGORIA </a></button>
+<button type="button" class="btn btn-secondary btn-lg btn-block badge-dark"><a href="editarcat"> EDITAR CATEGORIA </a></button>
 
-{include "insert.tpl"}
+
+
+

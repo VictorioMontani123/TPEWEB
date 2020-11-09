@@ -42,8 +42,8 @@ function InsertProduct($nombre,$color,$especificacion,$precio,$id_categoria){
 function EditarProducto($nombre,$color,$especificacion,$precio, $idcategoria, $id){
   $sentencia = $this->db->prepare("UPDATE  producto SET nombre = '$nombre', color = '$color', especificacion = '$especificacion', precio = $precio, id_categoria = $idcategoria WHERE id=?"); 
   var_dump ($sentencia);
-  $caca = $sentencia->execute(array($id));
-  var_dump($caca);
+  $sentencia->execute(array($id));
+  //var_dump($caca);
 }
 
 function DeleteProduct($id){
@@ -59,6 +59,29 @@ function DeleteProduct($id){
  
 }
 */
+function GetCategoriaJoin(){
+    $sentencia = $this->db->prepare('SELECT id,nombre_categoria FROM categoria');
+    $sentencia->execute();
+    return $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+
+}
+
+function insertcategoria($nombre){
+  $sentencia = $this->db->prepare("INSERT INTO categoria (nombre_categoria) VALUES(?)"); 
+  $sentencia->execute(array($nombre));
+}
+
+function borrarcat($id){
+  $sentencia =  $this->db->prepare("DELETE FROM categoria WHERE id=?");
+  $sentencia->execute(array($id));
+}
+function modificarCategoria( $id, $nombre){
+  $sentencia = $this->db->prepare("UPDATE categoria SET nombre_categoria = '$nombre' WHERE id=$id"); 
+  $sentencia->execute(array($id, $nombre));
+}
+
+
 }
 
 

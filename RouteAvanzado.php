@@ -20,10 +20,18 @@
     $r->addRoute("ver/:ID", "GET", "db_controller", "GetProductFiltro");
     $r->addRoute("filtramos", "POST", "db_controller", "ShowfiltrodeCategorias");
     
-
+    
     // -------------------------- PARA LOS ADMIN ------------------------------
+    
 
+    $r->addRoute("modificarcategoria", "POST", "db_controller", "modificarcategoria");
+    $r->addRoute("editarcat", "GET", "db_controller", "editarcat");
+    $r->addRoute("borrarcategoria/:ID", "GET", "db_controller", "borrarcategoria"); // va al model y borra
+    $r->addRoute("borrarcat", "GET", "db_controller", "borrarcat");// me muestra la pagina para borrar
+    $r->addRoute("catinsert", "GET", "db_controller", "catinsert");
+    $r->addRoute("insertcategoria", "POST", "db_controller", "insertarcategoria");
     $r->addRoute("delete/:ID", "GET", "db_controller", "Delete");
+    $r->addRoute("insertar", "GET", "db_controller", "insertar");
     $r->addRoute("insert", "POST", "db_controller", "InsertProduct");
     $r->addRoute("verificado", "POST", "db_controllerAdmin", "verificaradmin");
     $r->addRoute("edit", "POST", "db_controller", "editarProducto");

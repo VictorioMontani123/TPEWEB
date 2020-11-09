@@ -26,8 +26,8 @@ class DataView{
         $this->smarty->display('templates/tpusuarios.tpl');
     }
 
-    function ShowProductosAdmin($productos, $Categorias){
-       
+    function ShowProductosAdmin($productos, $Categorias, $JoinCategorias){
+       //$contenedor = var_dump ($JoinCategorias);
        // $this->smarty->debugging = true;
         $this->smarty->assign('titulo', "LISTA DE PRODUCTOS");
         $this->smarty->assign('nombre', "NOMBRE");
@@ -35,8 +35,8 @@ class DataView{
         $this->smarty->assign('especificacion', "ESPECIFICACION");
         $this->smarty->assign('precio', "PRECIO");
         $this->smarty->assign('TituloCategoria', "CATEGORIA");
-
         
+        $this->smarty->assign('descriptos', $JoinCategorias);
         $this->smarty->assign('Categorias', $Categorias);
         $this->smarty->assign('productos', $productos);
         $this->smarty->display('templates/tpadmin.tpl');
@@ -70,12 +70,23 @@ class DataView{
 
     }
 
+    function insertar($JoinCategorias){
+        $this->smarty->assign('descriptos', $JoinCategorias);
+        $this->smarty->display('templates/insert.tpl');
+        
+    }
+    function catinsert(){
+        $this->smarty->display('templates/insertcategoria.tpl');
+    }
+    function borrarcategoria($JoinCategorias){
+        $this->smarty->assign('descriptos', $JoinCategorias);
+        $this->smarty->display('templates/borrarcategoria.tpl');
+    }
+    function modificarCategoria($JoinCategorias){
+        $this->smarty->assign('descriptos', $JoinCategorias);
+        $this->smarty->display('templates/modificarCategoria.tpl');
 
-
-
-
-
-
+}
 }
 
 

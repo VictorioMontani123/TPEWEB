@@ -42,24 +42,57 @@ class db_controller {
 
     //               ---------------------------- SOLO ADMINISTRADORES --------------------------------
  
-
+   function editarcat(){
+    $JoinCategorias = $this->model->GetCategoriaJoin();
+    $this->view->modificarCategoria($JoinCategorias);
+   }
+    function borrarcategoria($id = null){
+        $id = $id[':ID'];
+        $contenedor = $_POST['borrarcat'];
+        $this->model->borrarcat($id);
+        $this->view->ShowPredeterminadoADMIN();
+    }
+    function modificarcategoria(){
+        $id = $_POST['id'];
+        $contenedor = $_POST['editarnombre'];
+        $this->model->modificarCategoria( $id, $contenedor);
+        $this->view->ShowPredeterminadoADMIN();
+    }
+    function borrarcat(){
+        $JoinCategorias = $this->model->GetCategoriaJoin();
+        $this->view->borrarcategoria($JoinCategorias);
+        
+    }
+    function insertar(){
+        $JoinCategorias = $this->model->GetCategoriaJoin(); 
+        $this->view->insertar($JoinCategorias);
+    }
+    function catinsert(){
+        $this->view->catinsert();
+    }
+    public function insertarcategoria(){
+        
+        $this->model->insertcategoria($_POST['nombre_categoria']);
+        
+        $this->view->ShowPredeterminadoADMIN();
+    }
 
 
     public function ShowProductosAdmin(){   // nos muestra todos los productos y el ABM
         $this->verificarusuariologeado();  // barrera de seguridad
-
+        $JoinCategorias = $this->model->GetCategoriaJoin();                                 //obtener categorias con el join
         $productos = $this->model->GetProduct();
         $Categorias = $this->model->GetCategoria();
-        $this->view->ShowProductosAdmin($productos, $Categorias);
+        $this->view->ShowProductosAdmin($productos, $Categorias, $JoinCategorias);
         
     }
 
     public function editarProducto($id = null){
-        // $id = $id[':ID'];
+         //$id = $id[':ID'];
         // $productos = $this->model->GetProductFiltro($id);
  
         
-         $this->model->EditarProducto($_POST['EditNombre'],$_POST['EditColor'],$_POST['EditEspecificacion'],$_POST['EditPrecio'],$_POST['EditIdCategoria'],$_POST['EditId']);
+         $this->model->EditarProducto($_POST['EditNombre'],$_POST['EditColor'],$_POST['EditEspecificacion'],$_POST['EditPrecio'],$_POST['InsertCategoria'],$_POST['EditId']);
          
          $this->view->ShowPredeterminadoADMIN();
     }
@@ -110,6 +143,7 @@ class db_controller {
         $this->view->ShowProductos($productos, $arcategorias);
         
     }
+
 
 }
 /*
