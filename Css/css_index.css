@@ -68,6 +68,9 @@ body {
 .mapa {
     width: 100%;
 }
+.ocultar{
+    display: none;
+}
 
 @media only screen and (min-width: 600px)  {
     .parrafoQS {
@@ -112,7 +115,9 @@ body {
     }
 
 
-
+    .ocultar{
+        display: none;
+    }
 
 
 }

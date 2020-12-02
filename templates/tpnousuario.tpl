@@ -1,4 +1,5 @@
-{include "headerusuario.tpl"}
+{include "header.tpl"}
+
 
 <table class="table table-bordered table-dark">
     <thead>

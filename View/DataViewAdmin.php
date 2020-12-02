@@ -32,9 +32,14 @@ class DataViewAdmin{
     
 
     function ShowPredeterminado(){
-        header("Location: ".BASE_URL."productosadmin"); // para que vuelva despues de que ejecute la function
+        header("Location: ".BASE_URL."productos"); // para que vuelva despues de que ejecute la function
     }
-
+    function ShowPredeterminadoAdmin(){ // para que vuelva despues de que ejecute la function
+        header("Location: ".BASE_URL."productosadmin");
+    }
+    function ShowPredeterminadoUsuario(){ // para que vuelva despues de que ejecute la function
+        header("Location: ".BASE_URL."productosusuario");
+    }
     function BacktoLogin(){
         header("Location: ".BASE_URL."login"); // para que vuelva despues de que ejecute la function
     }
